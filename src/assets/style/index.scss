@@ -1,9 +1,0 @@
-@use "_mixins";
-@use "_normalize";
-@use "_variables";
-
-html {
-	background-color: var(--theme-background-color);
-	color: var(--theme-text-color);
-	color-scheme: dark;
-}

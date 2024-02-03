@@ -1,0 +1,40 @@
+@custom-media --device-phone (width <= 575px);
+@custom-media --device-tablet (576px<= width <= 767px);
+@custom-media --device-laptop (768px <= width <= 1199px);
+@custom-media --device-desktop (1200px <= width <= 1920px);
+@custom-media --device-tv (width >= 1920px);
+
+@custom-media --size-sm (576px <=width);
+@custom-media --size-md (768px <=width);
+@custom-media --size-lg (1200px <=width);
+@custom-media --size-xl (1920px <=width);
+
+@define-mixin light-theme {
+	--background-color: rgb(255, 255, 255);
+	--accent-color: rgb(79, 70, 229);
+	--text-color: rgb(0, 0, 0);
+	--text-accent-color: rgb(255, 255, 255);
+	--hover-color-main: rgb(229, 231, 235);
+	--hover-color-sec: rgb(210, 213, 219);
+}
+@define-mixin dark-theme {
+	--background-color: rgb(15, 22, 36);
+	--accent-color: rgb(165, 180, 252);
+	--text-color: rgb(205, 217, 228);
+	--text-accent-color: rgb(17, 24, 39);
+	--hover-color-main: rgb(30, 40, 55);
+	--hover-color-sec: rgb(55, 65, 80);
+}
+
+html,
+html[data-theme='light'] {
+	@mixin light-theme;
+}
+html[data-theme='dark'] {
+	@mixin dark-theme;
+}
+@media (prefers-color-scheme: dark) {
+	html:not([data-theme]) {
+		@mixin dark-theme;
+	}
+}

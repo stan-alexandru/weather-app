@@ -6,6 +6,9 @@ import {
 	getOpenWeatherGeolocation,
 	getOpenWeatherReverseGeolocation,
 } from '@/lib/helpers';
+import Navbar from '@/components/Navbar';
+import Search from '@/components/Search';
+import Card from '@/components/Card';
 
 function App() {
 	const [search, setSearch] = useState<string>('');
@@ -18,6 +21,7 @@ function App() {
 		event.preventDefault();
 		const location = await getOpenWeatherGeolocation({ location: search });
 		setCityArray(location);
+		setSearch('');
 	}
 	async function handleCoordinates() {
 		const coords = await getBrowserCoordinates();
@@ -36,7 +40,15 @@ function App() {
 
 	return (
 		<>
-			<form onSubmit={handleForm}>
+			<Navbar />
+			<div className='container'>
+				<Search
+					handleCoordinates={handleCoordinates}
+					handleForm={handleForm}
+					search={search}
+					setSearch={setSearch}
+				/>
+				{/* <form onSubmit={handleForm}>
 				<button onClick={handleCoordinates} type='button'>
 					Get Location
 				</button>
@@ -47,15 +59,11 @@ function App() {
 					onChange={(event) => setSearch(event.target.value)}
 				/>
 				<button type='submit'>Submit</button>
-			</form>
-
-			{location && weather && (
-				<>
-					<h1>{location?.name}</h1>
-					<h1>{weather.lat}</h1>
-					<h1>{weather.current?.feels_like}</h1>
-				</>
-			)}
+			</form> */}
+				{weather && location ? (
+					<Card weather={weather} location={location} />
+				) : undefined}
+			</div>
 		</>
 	);
 }

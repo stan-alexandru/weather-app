@@ -20,15 +20,28 @@ body {
 	color: var(--color-text-primary);
 }
 
-/* .container {
-	max-width: 70rem;
-} */
+.container {
+	margin: auto;
+	width: calc(100vw - 18%);
+	@include mixins.mediaquery('sm') {
+		width: calc(100vw - 22%);
+	}
+	@include mixins.mediaquery('md') {
+		width: calc(100vw - 25%);
+	}
+	@include mixins.mediaquery('lg') {
+		width: calc(100vw - 34%);
+	}
+	@include mixins.mediaquery('xl') {
+		width: calc(100vw - 46%);
+	}
+}
 
 h1,
 .h1 {
 	font-size: 2.5rem;
 	line-height: 3rem;
-	font-weight: var(--font-weight-500);
+	font-weight: var(--font-weight-600);
 }
 h2,
 .h2 {
@@ -49,4 +62,21 @@ body,
 	font-size: 1rem;
 	line-height: 1rem;
 	font-weight: var(--font-weight-300);
+}
+
+/* Screen reader  
+https://gist.github.com/ffoodd/000b59f431e3e64e4ce1a24d5bb36034
+*/
+.sr-only {
+	border: 0 !important;
+	clip: rect(1px, 1px, 1px, 1px) !important; /* 1 */
+	-webkit-clip-path: inset(50%) !important;
+	clip-path: inset(50%) !important; /* 2 */
+	height: 1px !important;
+	margin: -1px !important;
+	overflow: hidden !important;
+	padding: 0 !important;
+	position: absolute !important;
+	width: 1px !important;
+	white-space: nowrap !important; /* 3 */
 }

@@ -13,6 +13,7 @@ import Card from '@/components/Card';
 function App() {
 	const [search, setSearch] = useState<string>('');
 	const [cityArray, setCityArray] = useState<OpenWeatherGeoCoding[]>();
+	console.log('🚀 ~ App ~ cityArray:', cityArray);
 
 	const [weather, setWeather] = useState<OpenWeatherOneCall>();
 	const [location, setLocation] = useState<OpenWeatherGeoCoding>();

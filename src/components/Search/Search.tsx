@@ -7,11 +7,15 @@ export default function Search({
 }) {
 	return (
 		<form className={style.wrapper} onSubmit={handleForm}>
-			<button type='button' onClick={handleCoordinates}>
+			<button
+				className={style.button}
+				type='button'
+				onClick={handleCoordinates}
+			>
 				<svg
 					xmlns='http://www.w3.org/2000/svg'
-					width='32px'
-					height='32px'
+					width='24px'
+					height='24px'
 					viewBox='0 0 100 100'
 				>
 					<path
@@ -28,10 +32,13 @@ export default function Search({
 			<input
 				type='search'
 				placeholder='Search for a new place'
+				className={style.input}
 				value={search}
 				onChange={(event) => setSearch(event.target.value)}
 			/>
-			<button type='submit'>Submit</button>
+			<button className={style.button} type='submit'>
+				Submit
+			</button>
 		</form>
 	);
 }

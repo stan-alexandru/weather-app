@@ -8,39 +8,40 @@ export default function Card({
 	weather: OpenWeatherOneCall;
 	location: OpenWeatherGeoCoding;
 }) {
-	const { current } = weather;
-	const { name, country } = location;
+	const { current, timezone_offset } = weather;
+
 	const date = new Intl.DateTimeFormat('en-US', {
 		weekday: 'long',
 		hour: 'numeric',
 		hour12: true,
 		minute: '2-digit',
-	}).format(1709158278);
+	});
+	const { name, country } = location;
 	const regionNamesInEnglish = new Intl.DisplayNames(['en'], {
 		type: 'region',
 	});
-
+	const time = current?.dt + timezone_offset;
 	return (
 		<article className={style.card}>
-			<div>
+			<div className={style.title}>
 				<h1>
 					{name}, {regionNamesInEnglish.of(country)}
 				</h1>
-				<h2>
-					{date},{current?.weather[0]?.description}
-				</h2>
+				<p>
+					{date.format(time)},{current?.weather[0]?.description}
+				</p>
 			</div>
 			<div className={style.wrapper}>
 				<div>
 					<h1>{current?.temp}°</h1>
 					<p>Feels like {current?.feels_like}°</p>
 				</div>
-				<div>Icon</div>
+				<div></div>
 			</div>
 
 			<div className={style.bottom}>
-				<h3>Humidity: {current?.humidity}%</h3>
-				<h3>Wind: {current?.wind_speed}m/s</h3>
+				<p>Humidity: {current?.humidity}%</p>
+				<p>Wind: {current?.wind_speed}m/s</p>
 			</div>
 		</article>
 	);

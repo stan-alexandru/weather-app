@@ -22,6 +22,9 @@ body {
 
 .container {
 	margin: auto;
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
 	width: calc(100vw - 18%);
 	@include mixins.mediaquery('sm') {
 		width: calc(100vw - 22%);
@@ -35,6 +38,17 @@ body {
 	@include mixins.mediaquery('xl') {
 		width: calc(100vw - 46%);
 	}
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+body,
+p {
+	letter-spacing: 0.025em;
+	margin: 0;
 }
 
 h1,

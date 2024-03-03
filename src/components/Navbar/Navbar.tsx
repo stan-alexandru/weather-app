@@ -3,9 +3,8 @@ export default function Navbar() {
 	return (
 		<header className={style.header}>
 			<img
+				className={style.img}
 				src='/src/assets/images/MandatoryWeather-logos_transparent.png'
-				height={48}
-				width={200}
 				alt='Mandatory Weather logo'
 			/>
 			<div>

@@ -35,7 +35,7 @@ export interface OpenWeatherOneCall {
 	lon: number;
 	timezone: string;
 	timezone_offset: number;
-	current?: {
+	current: {
 		dt: number;
 		sunrise: number;
 		sunset: number;
@@ -59,7 +59,7 @@ export interface OpenWeatherOneCall {
 			icon: string;
 		}[];
 	};
-	hourly?: {
+	hourly: {
 		dt: number;
 		temp: number;
 		feels_like: number;
@@ -82,7 +82,7 @@ export interface OpenWeatherOneCall {
 			icon: string;
 		}[];
 	}[];
-	daily?: {
+	daily: {
 		dt: number;
 		sunrise: number;
 		sunset: number;

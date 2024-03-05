@@ -21,6 +21,7 @@
 	},
 	"devDependencies": {
 		"@csstools/postcss-global-data": "^2.1.1",
+		"@iconify/react": "^4.1.1",
 		"@total-typescript/ts-reset": "^0.5.1",
 		"@types/node": "^20.11.24",
 		"@types/react": "^18.2.61",

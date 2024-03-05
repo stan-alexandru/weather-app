@@ -1,6 +1,7 @@
 import { OpenWeatherGeoCoding, OpenWeatherOneCall } from '@/types';
+import getWeatherIcon from '@/lib/getWeatherIcon';
 import style from './Card.module.css';
-
+import { Icon } from '@iconify/react';
 export default function Card({
 	weather,
 	location,
@@ -9,7 +10,13 @@ export default function Card({
 	location: OpenWeatherGeoCoding;
 }) {
 	const { current, timezone_offset } = weather;
-
+	const icon = getWeatherIcon(
+		current?.weather[0]?.id,
+		current?.dt,
+		current?.sunrise,
+		current?.sunset,
+	);
+	console.log(icon, typeof icon);
 	const date = new Intl.DateTimeFormat('en-US', {
 		weekday: 'long',
 		hour: 'numeric',
@@ -36,7 +43,9 @@ export default function Card({
 					<h1>{current?.temp}°</h1>
 					<p>Feels like {current?.feels_like}°</p>
 				</div>
-				<div></div>
+				<div>
+					<Icon icon={icon} width={96} height={96} />
+				</div>
 			</div>
 
 			<div className={style.bottom}>

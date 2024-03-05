@@ -16,7 +16,6 @@ export default function Card({
 		current?.sunrise,
 		current?.sunset,
 	);
-	console.log(icon, typeof icon);
 	const date = new Intl.DateTimeFormat('en-US', {
 		weekday: 'long',
 		hour: 'numeric',

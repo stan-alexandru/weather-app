@@ -4,7 +4,6 @@ export default function getWeatherIcon(
 	sunRise: number,
 	sunSet: number,
 ): string {
-	console.log(id, unixTime, sunRise, sunSet);
 	const timeOfDay = unixTime < sunRise || unixTime > sunSet ? 'night' : 'day';
 
 	if (timeOfDay === 'day') {

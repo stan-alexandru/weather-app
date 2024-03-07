@@ -9,6 +9,7 @@ import {
 import Navbar from '@/components/Navbar';
 import Search from '@/components/Search';
 import Card from '@/components/Card';
+import ForecastCard from '@/components/ForecastCard';
 
 function App() {
 	const [search, setSearch] = useState<string>('');
@@ -63,6 +64,7 @@ function App() {
 				{weather && location ? (
 					<Card weather={weather} location={location} />
 				) : undefined}
+				{weather && location ? <ForecastCard weather={weather} /> : undefined}
 			</div>
 		</>
 	);

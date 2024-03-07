@@ -10,6 +10,8 @@ export default function Card({
 	location: OpenWeatherGeoCoding;
 }) {
 	const { current, timezone_offset } = weather;
+	const UNIX_TIME_CONVERT = 1000;
+
 	const icon = getWeatherIcon(
 		current?.weather[0]?.id,
 		current?.dt,
@@ -26,7 +28,7 @@ export default function Card({
 	const regionNamesInEnglish = new Intl.DisplayNames(['en'], {
 		type: 'region',
 	});
-	const time = current?.dt + timezone_offset;
+	const time = current?.dt * UNIX_TIME_CONVERT;
 	return (
 		<article className={style.card}>
 			<div className={style.title}>

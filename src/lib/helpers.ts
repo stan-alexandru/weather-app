@@ -36,7 +36,7 @@ export async function getOpenWeatherReverseGeolocation({
 	url.searchParams.set('lat', lat.toString());
 	url.searchParams.set('lon', lon.toString());
 	url.searchParams.set('limit', limit.toString());
-	url.searchParams.set('appid', import.meta.env.VITE_APY_KEY);
+	url.searchParams.set('appid', import.meta.env.VITE_API_KEY);
 
 	try {
 		const response = await fetch(url);
@@ -60,7 +60,7 @@ export async function getOpenWeatherGeolocation({
 	const url = new URL(BASE_URL);
 	url.searchParams.set('q', location);
 	url.searchParams.set('limit', limit.toString());
-	url.searchParams.set('appid', import.meta.env.VITE_APY_KEY);
+	url.searchParams.set('appid', import.meta.env.VITE_API_KEY);
 
 	try {
 		const response = await fetch(url);
@@ -90,7 +90,7 @@ export async function callOpenWeatherOneCall({
 	url.searchParams.set('units', units);
 	url.searchParams.set('lang', lang);
 	exclude ? url.searchParams.set('exclude', exclude.join(',')) : null;
-	url.searchParams.set('appid', import.meta.env.VITE_APY_KEY);
+	url.searchParams.set('appid', import.meta.env.VITE_API_KEY);
 
 	try {
 		const response = await fetch(url);

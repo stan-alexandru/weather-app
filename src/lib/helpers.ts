@@ -31,7 +31,7 @@ export async function getOpenWeatherReverseGeolocation({
 	lon,
 	limit = 5,
 }: OpenWeatherReverseGeocodingApi): Promise<OpenWeatherGeoCoding[]> {
-	const BASE_URL = 'http://api.openweathermap.org/geo/1.0/reverse';
+	const BASE_URL = 'https://api.openweathermap.org/geo/1.0/reverse';
 	const url = new URL(BASE_URL);
 	url.searchParams.set('lat', lat.toString());
 	url.searchParams.set('lon', lon.toString());
@@ -56,7 +56,7 @@ export async function getOpenWeatherGeolocation({
 	location,
 	limit = 5,
 }: OpenWeatherGeoCodingApi): Promise<OpenWeatherGeoCoding[]> {
-	const BASE_URL = 'http://api.openweathermap.org/geo/1.0/direct';
+	const BASE_URL = 'https://api.openweathermap.org/geo/1.0/direct';
 	const url = new URL(BASE_URL);
 	url.searchParams.set('q', location);
 	url.searchParams.set('limit', limit.toString());

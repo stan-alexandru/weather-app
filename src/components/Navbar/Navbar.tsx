@@ -1,12 +1,9 @@
 import style from './Navbar.module.css';
+import img from '@/assets/images/MandatoryWeather-logos_transparent.png';
 export default function Navbar() {
 	return (
 		<header className={style.header}>
-			<img
-				className={style.img}
-				src='/src/assets/images/MandatoryWeather-logos_transparent.png'
-				alt='Mandatory Weather logo'
-			/>
+			<img className={style.img} src={img} alt='Mandatory Weather logo' />
 			<div>
 				<a
 					target='_blank'

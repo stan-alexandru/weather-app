@@ -1,0 +1,27 @@
+.header {
+	background-color: var(--color-background-primary);
+	padding: 0.5rem 2.5rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-radius: 0 0 1rem 1rem;
+}
+
+a {
+	text-decoration: none;
+	color: var(--color-bg-secondary);
+}
+
+.img {
+	height: auto;
+	width: auto;
+	max-width: 200px;
+	max-height: 2rem;
+	object-fit: contain;
+	@media (--size-md) {
+		max-height: 3rem;
+	}
+	@media (--size-lg) {
+		max-height: 4rem;
+	}
+}

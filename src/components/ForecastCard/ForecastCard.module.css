@@ -1,0 +1,23 @@
+.card {
+	background-color: var(--color-background-primary);
+	border-radius: 0.75rem;
+	padding: 1.25rem;
+	margin-inline: auto;
+	width: 100%;
+}
+.li {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	border-color: var(--color-background-secondary);
+	border-bottom: 2px solid;
+	&&:last-of-type {
+		border: 0;
+	}
+}
+.p {
+	display: flex;
+	flex-basis: 33.33%;
+	justify-content: center;
+	align-items: center;
+}

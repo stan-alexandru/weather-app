@@ -1,0 +1,30 @@
+.wrapper {
+	width: 100%;
+	margin-top: 2rem;
+	background-color: var(--color-background-primary);
+	padding: 0.75rem;
+	border-radius: 1rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	gap: 0.25rem;
+
+	@media (--size-sm) {
+		gap: 1rem;
+	}
+}
+.button {
+	border: none;
+}
+
+.input {
+	border: none;
+	outline: none;
+	width: 100%;
+	box-sizing: border-box;
+	&:placeholder-shown {
+		text-overflow: ellipsis;
+	}
+}
+.icon {
+}

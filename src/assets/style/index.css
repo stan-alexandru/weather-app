@@ -25,6 +25,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	gap: 2rem;
+	margin-bottom: 2rem;
 	width: calc(100vw - 18%);
 	@media (--size-sm) {
 		width: calc(100vw - 22%);

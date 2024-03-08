@@ -14,6 +14,7 @@ import ForecastCard from '@/components/ForecastCard';
 function App() {
 	const [search, setSearch] = useState<string>('');
 	const [cityArray, setCityArray] = useState<OpenWeatherGeoCoding[]>();
+	console.log('🚀 ~ App ~ cityArray:', cityArray);
 
 	const [weather, setWeather] = useState<OpenWeatherOneCall>();
 	const [location, setLocation] = useState<OpenWeatherGeoCoding>();
@@ -49,18 +50,6 @@ function App() {
 					search={search}
 					setSearch={setSearch}
 				/>
-				{/* <form onSubmit={handleForm}>
-				<button onClick={handleCoordinates} type='button'>
-					Get Location
-				</button>
-				<input
-					type='search'
-					placeholder='Search'
-					value={search}
-					onChange={(event) => setSearch(event.target.value)}
-				/>
-				<button type='submit'>Submit</button>
-			</form> */}
 				{weather && location ? (
 					<Card weather={weather} location={location} />
 				) : undefined}

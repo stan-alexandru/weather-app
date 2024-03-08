@@ -1,12 +1,18 @@
 import style from './Search.module.css';
+interface Props {
+	handleCoordinates: () => void;
+	handleForm: (event: React.FormEvent<HTMLFormElement>) => void;
+	search: string;
+	setSearch: (param: string) => void;
+}
 export default function Search({
 	handleCoordinates,
 	handleForm,
 	search,
 	setSearch,
-}) {
+}: Props) {
 	return (
-		<form className={style.wrapper} onSubmit={handleForm}>
+		<form className={style.wrapper} onSubmit={(event) => handleForm(event)}>
 			<button
 				className={style.button}
 				type='button'

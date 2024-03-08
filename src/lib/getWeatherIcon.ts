@@ -1,11 +1,10 @@
 export default function getWeatherIcon(
-	id: number,
+	id: number = 804,
 	unixTime: number,
 	sunRise: number,
 	sunSet: number,
 ): string {
 	const timeOfDay = unixTime < sunRise || unixTime > sunSet ? 'night' : 'day';
-
 	if (timeOfDay === 'day') {
 		switch (id) {
 			case 200:

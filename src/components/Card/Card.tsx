@@ -9,7 +9,7 @@ export default function Card({
 	weather: OpenWeatherOneCall;
 	location: OpenWeatherGeoCoding;
 }) {
-	const { current, timezone_offset } = weather;
+	const { current } = weather;
 	const UNIX_TIME_CONVERT = 1000;
 
 	const icon = getWeatherIcon(

@@ -1,16 +1,13 @@
+import useWeatherStore from '@/lib/store';
 import style from './Search.module.css';
 interface Props {
 	handleCoordinates: () => void;
 	handleForm: (event: React.FormEvent<HTMLFormElement>) => void;
-	search: string;
-	setSearch: (param: string) => void;
 }
-export default function Search({
-	handleCoordinates,
-	handleForm,
-	search,
-	setSearch,
-}: Props) {
+export default function Search({ handleCoordinates, handleForm }: Props) {
+	const search = useWeatherStore((state) => state.search);
+	const updateSearch = useWeatherStore((state) => state.updateSearch);
+
 	return (
 		<form className={style.wrapper} onSubmit={(event) => handleForm(event)}>
 			<button
@@ -40,7 +37,7 @@ export default function Search({
 				placeholder='Search for a new place'
 				className={style.input}
 				value={search}
-				onChange={(event) => setSearch(event.target.value)}
+				onChange={(event) => updateSearch(event.target.value)}
 			/>
 			<button className={style.button} type='submit'>
 				Submit

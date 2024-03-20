@@ -1,4 +1,4 @@
-import { OpenWeatherGeoCoding, OpenWeatherOneCall } from '@/types';
+import type { OpenWeatherGeoCoding, OpenWeatherOneCall } from '@/types';
 import getWeatherIcon from '@/lib/getWeatherIcon';
 import style from './Card.module.css';
 import { Icon } from '@iconify/react';

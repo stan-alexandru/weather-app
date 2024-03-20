@@ -8,7 +8,8 @@ import Navbar from '@/components/Navbar';
 import Search from '@/components/Search';
 import Card from '@/components/Card';
 import ForecastCard from '@/components/ForecastCard';
-import useWeatherStore from './lib/store';
+import useWeatherStore from '@/lib/store';
+import SearchSelect from '@/components/SearchSelect';
 
 function App() {
 	const location = useWeatherStore((state) => state.location);
@@ -16,17 +17,18 @@ function App() {
 	const cityArray = useWeatherStore((state) => state.cityArray);
 	const search = useWeatherStore((state) => state.search);
 	const updateSearch = useWeatherStore((state) => state.updateSearch);
-	const updateWeather = useWeatherStore((state) => state.updateWeather);
 	const updateCityArray = useWeatherStore((state) => state.updateCityArray);
 
+	const updateWeather = useWeatherStore((state) => state.updateWeather);
 	const updateLocation = useWeatherStore((state) => state.updateLocation);
 
 	async function handleForm(event: React.FormEvent<HTMLFormElement>) {
 		event.preventDefault();
 		const location = await getOpenWeatherGeolocation({ location: search });
 		updateCityArray(location);
-		updateSearch('');
+		// updateSearch('');
 	}
+
 	async function handleCoordinates() {
 		const coords = await getBrowserCoordinates();
 		const geolocation = await getOpenWeatherReverseGeolocation({
@@ -47,19 +49,18 @@ function App() {
 			<Navbar />
 			<div className='container'>
 				<Search handleCoordinates={handleCoordinates} handleForm={handleForm} />
+				{cityArray && (
+					<SearchSelect array={cityArray} />
+					// <ul>
+					// 	{cityArray.map((city, index) => (
+					// 		<SearchItem {...city} key={city.lat + city.lon + index} />
+					// 	))}
+					// </ul>
+				)}
 				{weather && location ? (
 					<Card weather={weather} location={location} />
 				) : undefined}
 				{weather && location ? <ForecastCard weather={weather} /> : undefined}
-				{cityArray && (
-					<h1>
-						{cityArray.map((city) => (
-							<>
-								<p>{city.name + '  ' + city.country}</p>
-							</>
-						))}
-					</h1>
-				)}
 			</div>
 		</>
 	);

@@ -1,4 +1,4 @@
-import { OpenWeatherOneCall } from '@/types';
+import type { OpenWeatherOneCall } from '@/types';
 import style from './ForecastCard.module.css';
 import getWeatherIcon from '@/lib/getWeatherIcon';
 import { Icon } from '@iconify/react';

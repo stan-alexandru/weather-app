@@ -16,7 +16,6 @@ function App() {
 	const weather = useWeatherStore((state) => state.weather);
 	const cityArray = useWeatherStore((state) => state.cityArray);
 	const search = useWeatherStore((state) => state.search);
-	const updateSearch = useWeatherStore((state) => state.updateSearch);
 	const updateCityArray = useWeatherStore((state) => state.updateCityArray);
 
 	const updateWeather = useWeatherStore((state) => state.updateWeather);
@@ -26,7 +25,6 @@ function App() {
 		event.preventDefault();
 		const location = await getOpenWeatherGeolocation({ location: search });
 		updateCityArray(location);
-		// updateSearch('');
 	}
 
 	async function handleCoordinates() {

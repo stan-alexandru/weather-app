@@ -16,6 +16,8 @@ function App() {
 	const weather = useWeatherStore((state) => state.weather);
 	const cityArray = useWeatherStore((state) => state.cityArray);
 	const search = useWeatherStore((state) => state.search);
+	const updateSearch = useWeatherStore((state) => state.updateSearch);
+
 	const updateCityArray = useWeatherStore((state) => state.updateCityArray);
 
 	const updateWeather = useWeatherStore((state) => state.updateWeather);
@@ -40,6 +42,8 @@ function App() {
 
 		updateWeather(weather);
 		updateLocation(geolocation[0]);
+		updateCityArray([]);
+		updateSearch('');
 	}
 
 	return (
@@ -47,18 +51,13 @@ function App() {
 			<Navbar />
 			<div className='container'>
 				<Search handleCoordinates={handleCoordinates} handleForm={handleForm} />
-				{cityArray && (
-					<SearchSelect array={cityArray} />
-					// <ul>
-					// 	{cityArray.map((city, index) => (
-					// 		<SearchItem {...city} key={city.lat + city.lon + index} />
-					// 	))}
-					// </ul>
-				)}
+				{cityArray ? <SearchSelect array={cityArray} /> : undefined}
 				{weather && location ? (
-					<Card weather={weather} location={location} />
+					<>
+						<Card weather={weather} location={location} />
+						<ForecastCard weather={weather} />
+					</>
 				) : undefined}
-				{weather && location ? <ForecastCard weather={weather} /> : undefined}
 			</div>
 		</>
 	);

@@ -25,7 +25,9 @@ function SearchItem(props: OpenWeatherGeoCoding) {
 	const updateLocation = useWeatherStore((state) => state.updateLocation);
 	const updateSearch = useWeatherStore((state) => state.updateSearch);
 	const updateCityArray = useWeatherStore((state) => state.updateCityArray);
-
+	const regionNamesInEnglish = new Intl.DisplayNames(['en'], {
+		type: 'region',
+	});
 	async function handleClick(lat: number, lon: number) {
 		const city = await callOpenWeatherOneCall({ lat, lon });
 		updateWeather(city);
@@ -40,12 +42,17 @@ function SearchItem(props: OpenWeatherGeoCoding) {
 				onClick={() => handleClick(props.lat, props.lon)}
 				className={style.button}
 			>
-				{props.name},{props.country}
-				<Icon
-					icon={`cif:${props.country.toLocaleLowerCase()}`}
-					width={32}
-					height={32}
-				/>
+				<h1 className={style.city}>
+					{props.state ? `${props.name},${props.state}` : `${props.name}`}
+				</h1>
+				<p className={style.country}>
+					<Icon
+						icon={`cif:${props.country.toLocaleLowerCase()}`}
+						width={32}
+						height={32}
+					/>
+					{regionNamesInEnglish.of(props.country)}
+				</p>
 			</button>
 		</li>
 	);

@@ -19,7 +19,22 @@ body {
 	background-color: var(--color-background-secondary);
 	color: var(--color-text-primary);
 }
+.box {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
 
+	@media (--size-lg) {
+		flex-direction: row;
+
+		& article:first-of-type {
+			flex-basis: 33.33%;
+		}
+		article:nth-of-type(2) {
+			flex-basis: 66.66%;
+		}
+	}
+}
 .container {
 	margin: auto;
 	display: flex;

@@ -18,7 +18,10 @@ export default function ForecastCard({
 			<ul>
 				{daily.map((day) => (
 					<li key={day.dt} className={style.li}>
-						<p className={style.p}>{time.format(day.dt * UNIX_TIME_CONVERT)}</p>
+						<p className={style.date}>
+							{time.format(day.dt * UNIX_TIME_CONVERT)}
+						</p>
+
 						<Icon
 							icon={getWeatherIcon(
 								day.weather[0]?.id,
@@ -28,9 +31,10 @@ export default function ForecastCard({
 							)}
 							width={48}
 							height={48}
+							className={style.icon}
 						/>
-						<p className={style.p}>
-							{day.temp.min}° / {day.temp.max}°
+						<p className={style.temp}>
+							{Math.round(day.temp.min)}° {'/'} {Math.round(day.temp.max)}°
 						</p>
 					</li>
 				))}

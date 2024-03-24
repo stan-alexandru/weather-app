@@ -4,6 +4,7 @@ import {
 	getOpenWeatherGeolocation,
 	getOpenWeatherReverseGeolocation,
 } from '@/lib/helpers';
+
 import Navbar from '@/components/Navbar';
 import Search from '@/components/Search';
 import Card from '@/components/Card';
@@ -53,10 +54,10 @@ function App() {
 				<Search handleCoordinates={handleCoordinates} handleForm={handleForm} />
 				{cityArray ? <SearchSelect array={cityArray} /> : undefined}
 				{weather && location ? (
-					<>
+					<div className='box'>
 						<Card weather={weather} location={location} />
 						<ForecastCard weather={weather} />
-					</>
+					</div>
 				) : undefined}
 			</div>
 		</>

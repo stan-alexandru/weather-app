@@ -10,6 +10,7 @@ export default function Card({
 	location: OpenWeatherGeoCoding;
 }) {
 	const { current } = weather;
+
 	const UNIX_TIME_CONVERT = 1000;
 
 	const icon = getWeatherIcon(
@@ -41,8 +42,8 @@ export default function Card({
 			</div>
 			<div className={style.wrapper}>
 				<div>
-					<h1>{current?.temp}°</h1>
-					<p>Feels like {current?.feels_like}°</p>
+					<h1>{Math.round(current?.temp)}°</h1>
+					<p>Feels like {Math.round(current?.feels_like)}°</p>
 				</div>
 				<div>
 					<Icon icon={icon} width={96} height={96} />
@@ -51,7 +52,7 @@ export default function Card({
 
 			<div className={style.bottom}>
 				<p>Humidity: {current?.humidity}%</p>
-				<p>Wind: {current?.wind_speed}m/s</p>
+				<p>Wind: {Math.round(current?.wind_speed)}m/s</p>
 			</div>
 		</article>
 	);

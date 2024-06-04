@@ -9,7 +9,7 @@ export default function Card({
 	weather: OpenWeatherOneCall;
 	location: OpenWeatherGeoCoding;
 }) {
-	const { current } = weather;
+	const { current, timezone } = weather;
 
 	const UNIX_TIME_CONVERT = 1000;
 
@@ -24,6 +24,7 @@ export default function Card({
 		hour: 'numeric',
 		hour12: true,
 		minute: '2-digit',
+		timeZone: timezone,
 	});
 	const { name, country } = location;
 	const regionNamesInEnglish = new Intl.DisplayNames(['en'], {
